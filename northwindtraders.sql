@@ -214,7 +214,8 @@ SELECT DISTINCT
 (p.product_name) Name_of_product,
 (ct.category_name) Category_Product,
 COUNT(o.order_id) AS Total_orders,
-ROUND(SUM(od.unit_price) - SUM(od.discount), 2) As Total_sales_After_Discount
+ROUND(SUM(od.unit_price) - SUM(od.discount), 2) As Total_sales_After_Discount,
+ROUND(SUM(od.unit_price) - SUM(od.discount), 2)/COUNT(o.order_id) AS conv_rate
 FROM 
 orders o
 INNER JOIN customers c ON o.customer_id = c.customer_id
